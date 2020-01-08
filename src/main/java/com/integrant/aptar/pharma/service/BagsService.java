@@ -1,10 +1,13 @@
 package com.integrant.aptar.pharma.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.integrant.aptar.pharma.dto.BagDTO;
 import com.integrant.aptar.pharma.model.Bag;
 import com.integrant.aptar.pharma.repository.BagsRepository;
 
@@ -26,9 +29,11 @@ public class BagsService {
 	 *
 	 * @param bag the bag
 	 */
-	public void saveBag(Bag bag) {
+	public void saveBag(BagDTO bag) {
 		
-		bagsRepository.save(bag);	
+		Bag newBag = new Bag(bag.getContent(), bag.getType());
+		
+		bagsRepository.save(newBag);	
 	}
 
 	/**
@@ -58,5 +63,9 @@ public class BagsService {
 	public void checkPackageBox(Bag bag) {
 		logger.info("The package  of this bag is valid");
 		
+	}
+
+	public List<Bag> finAllBags() {
+		return bagsRepository.findAll();
 	}
 }

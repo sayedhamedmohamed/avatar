@@ -1,13 +1,17 @@
 package com.integrant.aptar.pharma.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.integrant.aptar.pharma.dto.BagDTO;
 import com.integrant.aptar.pharma.model.Bag;
 import com.integrant.aptar.pharma.service.BagsService;
 
@@ -20,9 +24,15 @@ public class BagsController {
 	private BagsService bagsService;
 	
 	@PostMapping("aptar/bags")
-	public void storeBags(@Validated @RequestBody Bag bag) {
+	public void storeBags(@Validated @RequestBody BagDTO bag) {
 		
 		bagsService.saveBag(bag);
+	}
+	
+	@GetMapping("aptar/bags")
+	public List<Bag> getAllBags() {
+		
+		return bagsService.finAllBags();
 	}
 	
 	@PostMapping("aptar/bags/scan")

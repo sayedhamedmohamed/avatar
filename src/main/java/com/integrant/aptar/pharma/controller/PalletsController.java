@@ -20,19 +20,19 @@ public class PalletsController {
 
 	}
 
-	@PostMapping("aptar/pallets")
+	@PostMapping("aptar/pallets/complete")
 	public void completePallet() {
 		logger.info("This Pallet has been completed successfully");
 
 	}
 
-	@PostMapping("aptar/pallets")
+	@PostMapping("aptar/pallets/wrap")
 	public void wrapPallet() {
 		logger.info("This Pallet has been wrapped successfully");
 
 	}
 
-	@PostMapping("aptar/pallets")
+	@PostMapping("aptar/pallets/shippment/transfer")
 	public void transferPalletForShippment() {
 		logger.info("This Pallet has been transfered for shipment successfully");
 
