@@ -1,5 +1,5 @@
-FROM java:8
-WORKDIR /
-ADD integrant-aptar.jar integrant-aptar.jar
-EXPOSE 8080
-CMD java - jar integrant-aptar.jar
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} integrant-aptar.jar.jar
+ENTRYPOINT ["java","-jar","/integrant-aptar.jar.jar"]
+
